@@ -2,8 +2,8 @@
 - Swetha Lakshmana Murthy (st169481)
 - Ram Sabarish Obla Amar Bapu(st169693)
 
-# How to run the code
-to do
+# Building an input pipeline using tf.data for the IDRID dataset 
+Note: Temporary code changes are reflected here.
+Please refer the code for the flow
 
-# Results
-to do
+
