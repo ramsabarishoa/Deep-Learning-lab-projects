@@ -80,3 +80,55 @@ test_labels = (df_load_test_csv['Retinopathy grade'].values).tolist()
 #print(test_images,type(test_images),len(test_images))
 #print(test_labels,type(test_labels),len(test_labels))
 
+#Debug
+#Decode a single image and print it
+train_ex_image = tf.io.read_file(train_images[0])
+train_ex_image_decoded = tf.io.decode_jpeg(train_ex_image)
+train_ex_cast = tf.cast(train_ex_image_decoded, tf.float32) / 255.
+train_ex_resized = tf.image.resize(train_ex_cast,size=(img_height, img_width))
+plt.imshow(train_ex_resized)
+plt.show()
+
+# A parser function to read an image from the set of images available and decode them further
+def _parse_function(image_train,image_label):
+  image_string = tf.io.read_file(image_train)
+  image_decoded = tf.io.decode_jpeg(image_string)
+  image_resized = tf.image.resize(image_decoded,size=(img_height, img_width))
+  return image_decoded,image_label
+
+# Creating a constant tensor by passing the train images and corresponding lables
+filenames = tf.constant(train_images)
+labels = tf.constant(train_labels)
+#print(filenames,type(filenames),filenames.shape)
+#print(labels,type(labels),labels.shape)
+
+#Creating an input pipeline
+dataset = tf.data.Dataset.from_tensor_slices((filenames,labels))
+dataset = dataset.map(_parse_function)
+dataset = dataset.shuffle(True)
+dataset = dataset.batch(BATCH_SIZE)
+
+img, lbl = next(iter(dataset))
+
+for image,label in dataset.take(1):
+  image_array = image.numpy()
+  #Debug
+  '''print(image_array.shape,label.shape)
+  plt.subplot(title=label.numpy())
+  plt.imshow(image_array)
+  plt.show()'''
+
+# Creating a validation set from the training images
+
+no_of_val_images = int(0.2 * len(train_images))
+
+validation_dataset = dataset.take(no_of_val_images)
+print(len(validation_dataset),"Images for validation set")
+
+for images, labels in validation_dataset.take(1):
+  val_array = images.numpy()
+  #Debug
+  '''print(val_array.shape,label.shape)
+  plt.subplot(title=label.numpy())
+  plt.imshow(image_array)
+  plt.show()'''
