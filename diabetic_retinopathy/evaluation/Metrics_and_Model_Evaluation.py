@@ -48,7 +48,7 @@ df_test = df_test.iloc[:, : 2]
 #print(df_test)
 predicted_label_list = []
 for iname,iclass in df_test.itertuples(index=False):
-    for file in train_images:
+    for file in test_images:
       if os.path.basename(file) == iname:
         img = tf.io.read_file(file)
         img = tf.io.decode_jpeg(img)
