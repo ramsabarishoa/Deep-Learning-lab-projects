@@ -19,3 +19,5 @@ The sequence of flow is as follows:
 
 The test accuracy obtained so far is 75.72%
 ![alt text](diabetic_retinopathy/experiments/Train_Val_Graph.png)
+![alt text](diabetic_retinopathy/experiments/Confusion_Matrix.png)
+![alt text](diabetic_retinopathy/experiments/Metrics.png)
