@@ -18,6 +18,8 @@ The sequence of flow is as follows:
 The tune.py file can be executed separately to configure and analyze the hyper-parameter tuning.
 Please make sure to enter the correct dataset directory path.
 
+The deep visualization is still is progress. An initial attempt in visualising the model is present in evaluation/deep visualization/ folder
+
 # Results
 
 The test accuracy obtained so far is 75.72%
