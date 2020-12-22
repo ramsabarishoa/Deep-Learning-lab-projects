@@ -15,6 +15,9 @@ The sequence of flow is as follows:
 5.	Metrics to evaluate the model
 6.	Other experimental results and logs are attached here
 
+The tune.py file can be executed separately to configure and analyze the hyper-parameter tuning.
+Please make sure to enter the correct dataset directory path.
+
 # Results
 
 The test accuracy obtained so far is 75.72%
