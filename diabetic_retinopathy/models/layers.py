@@ -1,21 +1,54 @@
-import gin
 import tensorflow as tf
+from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+from keras.models import Sequential
+from input_pipeline.preprocessing import img_width, img_height
 
-@gin.configurable
-def vgg_block(inputs, filters, kernel_size):
-    """A single VGG block consisting of two convolutional layers, followed by a max-pooling layer.
+print('------------------')
+print('Model Architecture')
+print('------------------')
+def model(input_shape, kernel_size, pool_size, n_classes, dropout_rate):
+    """Defining the model architecture.
 
-    Parameters:
-        inputs (Tensor): input of the VGG block
-        filters (int): number of filters used for the convolutional layers
-        kernel_size (tuple: 2): kernel size used for the convolutional layers, e.g. (3, 3)
+       Parameters:
+           input_shape (tuple: 3): input shape of the neural network
+           kernel_size (tuple: 2): kernel size used for the convolutional layers, e.g. (3, 3)
+           pool_size   (tuple: 2): pool size used for the MaxPooling layers, e.g. (2, 2)
+           n_classes   (int): number of classes, corresponding to the number of output neurons
+           dropout_rate (float): dropout rate
 
-    Returns:
-        (Tensor): output of the VGG block
+       Returns:
+           (keras.Model): keras model object
     """
 
-    out = tf.keras.layers.Conv2D(filters, kernel_size, padding='same', activation=tf.nn.relu)(inputs)
-    out = tf.keras.layers.Conv2D(filters, kernel_size, padding='same', activation=tf.nn.relu)(out)
-    out = tf.keras.layers.MaxPool2D((2, 2))(out)
+    model = Sequential()
+    model.add(Conv2D(32, kernel_size, activation='relu',
+                     input_shape = input_shape))
+    model.add(MaxPooling2D(pool_size = pool_size))
 
-    return out
+    model.add(Conv2D(64, kernel_size, activation='relu'))
+    model.add(MaxPooling2D(pool_size = pool_size))
+
+    model.add(Conv2D(128, kernel_size, activation='relu'))
+    model.add(MaxPooling2D(pool_size = pool_size))
+
+    model.add(Conv2D(256, kernel_size, activation='relu'))
+    model.add(MaxPooling2D(pool_size = pool_size))
+
+    model.add(Flatten())
+    model.add(Dense(512, activation='relu'))
+    model.add(Dropout(dropout_rate))
+    model.add(Dense(128, activation='relu'))
+    model.add(Dropout(dropout_rate))
+    model.add(Dense(n_classes, activation='softmax'))
+
+    model.compile(optimizer='adam',
+                  loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+                  metrics=['accuracy'])
+
+    return model
+
+mdl = model((img_height, img_width, 3), (3, 3), (2, 2), 2, 0.5)
+print('------------------------------------------Start------------------------------------------')
+print('Printing the Model Summary')
+print(mdl.summary())
+print('------------------------------------------End------------------------------------------')
