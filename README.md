@@ -28,5 +28,8 @@ The test accuracy obtained so far is **73.78%**
 
 # GradCAM Visualization
 
+The GradCAM visualization is shown for a test image with  Referable Diabetic Retionpathy(RDR)
+(Predicted Label:1)
+
 ![alt text](diabetic_retinopathy/experiments/GradCAM_image.jpg)
 ![alt text](diabetic_retinopathy/experiments/GradCAM_image_visualised.jpg)
