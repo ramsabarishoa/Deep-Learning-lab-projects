@@ -22,10 +22,11 @@ The deep visualization is still in progress. An initial attempt in visualising t
 
 # Results
 
-The test accuracy obtained so far is 73.78%
+The test accuracy obtained so far is **73.78%**
 ![alt text](diabetic_retinopathy/experiments/Updated_Train_and_Validation_Accuracy.png)
 ![alt text](diabetic_retinopathy/experiments/Updated_Confusion_Matrix.png)
 
-GradCAM Visualization
+# GradCAM Visualization
+
 ![alt text](diabetic_retinopathy/experiments/GradCAM_image.png)
 ![alt text](diabetic_retinopathy/experiments/GradCAM_image_visualised.png)
