@@ -282,16 +282,16 @@ classifier_layer_names = ["max_pooling2d_3","dropout","flatten","dense","dropout
 ]
 
 
-def get_img_array(img_path):
-    img_train = tf.io.read_file(img_path)
+def get_image_array(img):
+    img_train = tf.io.read_file(img)
     img_decoded = tf.io.decode_jpeg(img_train)
     img_cropped = tf.image.central_crop(img_decoded, central_fraction=0.95)
     img_cropped_bound = tf.image.crop_to_bounding_box(img_cropped, 0 , 0 , target_height = 2700, target_width = 3580)
     image_cast = tf.cast(img_cropped_bound, tf.float32) 
     image_cast = image_cast / 255.0
     array= tf.image.resize(image_cast,size=(img_ht,img_wd))
-    array = np.expand_dims(array, axis=0)
-    return array
+    image = np.expand_dims(array, axis=0)
+    return image
 
 
 def make_gradcam_heatmap(img_array, model, last_conv_layer_name, classifier_layer_name):
@@ -331,7 +331,7 @@ def make_gradcam_heatmap(img_array, model, last_conv_layer_name, classifier_laye
     heatmap = np.maximum(heatmap, 0) / np.max(heatmap)
     return heatmap
 
-img_array = get_img_array("/content/drive/MyDrive/IDRID_dataset/images/test/IDRiD_035.jpg")
+img_array = get_image_array("/content/drive/MyDrive/IDRID_dataset/images/test/IDRiD_035.jpg")
 
 #Predicted class
 preds = model.predict(img_array)
