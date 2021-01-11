@@ -28,5 +28,5 @@ The test accuracy obtained so far is **73.78%**
 
 # GradCAM Visualization
 
-![alt text](diabetic_retinopathy/experiments/GradCAM_image.png)
-![alt text](diabetic_retinopathy/experiments/GradCAM_image_visualised.png)
+![alt text](diabetic_retinopathy/experiments/GradCAM_image.jpg)
+![alt text](diabetic_retinopathy/experiments/GradCAM_image_visualised.jpg)
