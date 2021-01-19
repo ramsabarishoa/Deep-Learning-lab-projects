@@ -13,5 +13,5 @@ Accelerometer and Gyroscope data
 Activities (Labels 1-12)
 ![alt text](Human_Activity_Recognition/images/one.png)
 ![alt text](Human_Activity_Recognition/images/two.png)
-![alt text](Human_Activity_Recognition/images/three.png)
-![alt text](Human_Activity_Recognition/images/four.png)
+![alt text](Human_Activity_Recognition/images/3.png)
+![alt text](Human_Activity_Recognition/images/4.png)
