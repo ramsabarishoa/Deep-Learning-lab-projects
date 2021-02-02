@@ -25,3 +25,4 @@ Activities (Labels 1-12)
 The corresponding confusion matrix for the above results is as shown below,
 ![alt text](Human_Activity_Recognition/images/HAPT_CM.png)
 ![alt text](Human_Activity_Recognition/images/Normalized_CM.png)
+![alt text](Human_Activity_Recognition/images/CM_Report.png)
