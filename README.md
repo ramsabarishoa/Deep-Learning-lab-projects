@@ -17,3 +17,6 @@ The above two folders individually contains the following contents,
 
 # How to run the code
 Please choose the project directory and follow the instructions in their respective README.md file.
+
+The requirements.txt file contains the necessary packages that are required in common for both the projects.
+Please make sure to check the same before executing the projects.
