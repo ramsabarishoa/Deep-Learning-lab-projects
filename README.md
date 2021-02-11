@@ -3,7 +3,7 @@
 - Swetha Lakshmana Murthy     (st169481@stud.uni-stuttgart.de)
 
 
-# How to run the code
+
 Please refer the following two folders for the documented code and results,
 1.  Project_1 - diabetic_retinopathy
 2.  Project_2 - human_activity_recognition
@@ -14,3 +14,6 @@ The above two folders individually contains the following contents,
 3.  Documented Results
 4.  Poster and Presentation for Project_1
 5.  Paper for Project_2
+
+# How to run the code
+Please choose the project directory and follow the instructions in their respective README.md file.
