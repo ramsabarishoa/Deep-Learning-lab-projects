@@ -29,6 +29,7 @@ The sequence of the codeflow is as follows:
 ![alt text](experiments/Resized.png)
 
 **2.  Data Augmentation**
+
 Techniques used,  
 - Rotation  
 - Zoom  
@@ -38,6 +39,7 @@ Techniques used,
 ![alt text](experiments/Augmented_Images.png)
 
 **3. Hyperparameter Parameter Tuning used HParams**  
+
 Hyperparameter tuning is performed to obtain a consistent model architecture,  
 • HP_OPTIMIZER  
 • HP_EPOCHS  
@@ -48,4 +50,5 @@ Hyperparameter tuning is performed to obtain a consistent model architecture,
 |--------------------------------------|------------------------------------------|
 
 **4. Model Architecture**  
+
 The following architecture has been used,  
