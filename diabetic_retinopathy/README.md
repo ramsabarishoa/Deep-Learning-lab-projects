@@ -1,10 +1,12 @@
-# Team05
+# Project 1 - Diabetic Retinopathy Detection
+
+# Team05 
 - Ram Sabarish Obla Amar Bapu (st169693@stud.uni-stuttgart.de)  
 - Swetha Lakshmana Murthy     (st169481@stud.uni-stuttgart.de)  
 
 # How to run the code
 Run the **main.py** file.
-Here you can find different options for debugging the code.  
+Here you can find the different options for debugging the code.  
 Please select the necessary option according to your choice. 
 Also, please make sure to enter the correct dataset directory path.
 
@@ -20,8 +22,8 @@ The sequence of the codeflow is as follows:
 
 # Results
 
-1.  Input Pipeline
-- Resizing the image to 256x256(img_heightximg_width) without any distortion.  
+1.  **Input Pipeline**
+- Resizing the image to 256x256(img_height x img_width) without any distortion.  
 - Crop the image borders
 
 ![alt text](diabetic_retinopathy/experiments/Resized.png)
