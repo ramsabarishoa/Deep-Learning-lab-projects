@@ -37,14 +37,15 @@ Techniques used,
 
 ![alt text](experiments/Augmented_Images.png)
 
-**3. Hyperparameter Parameter Tuning used HParams**
+**3. Hyperparameter Parameter Tuning used HParams**  
 Hyperparameter tuning is performed to obtain a consistent model architecture,  
 • HP_OPTIMIZER  
 • HP_EPOCHS  
 • HP_DENSE_LAYER  
 • HP_DROPOUT  
 
-![alt text](experiments/hparams.png)
+| ![alt text](experiments/hparams.png) | ![alt text](experiments/acc_Hparams.png) |
+|--------------------------------------|------------------------------------------|
 
 **4. Model Architecture**  
 The following architecture has been used,  
