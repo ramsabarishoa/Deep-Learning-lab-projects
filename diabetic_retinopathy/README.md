@@ -26,7 +26,7 @@ The sequence of the codeflow is as follows:
 - Resizing the image to 256x256(img_height x img_width) without any distortion.  
 - Crop the image borders  
 
-![alt text](experiments/.png)
+![alt text](experiments/Resized.png)
 
 2. **Data Augmentation** 
 Techniques used,  
