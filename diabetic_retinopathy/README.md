@@ -25,6 +25,5 @@ The sequence of the codeflow is as follows:
 1.  **Input Pipeline**
 - Resizing the image to 256x256(img_height x img_width) without any distortion.  
 - Crop the image borders
-
-![alt text](diabetic_retinopathy/experiments/Resized.png)
+![alt text](experiments/Resized.png)
 
