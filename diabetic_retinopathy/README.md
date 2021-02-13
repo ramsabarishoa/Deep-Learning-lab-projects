@@ -22,9 +22,9 @@ The sequence of the codeflow is as follows:
 
 # Results
 
-**----------------------------------------------**
-**The overall test accuracy obtained is 72.81%.**
-**----------------------------------------------**
+**----------------------------------------------**  
+**The overall test accuracy obtained is 72.81%.**  
+**----------------------------------------------**  
 
 
 **1.  Input Pipeline**  
@@ -63,5 +63,12 @@ The following architecture has been used,
 
 **5. Evaluation and Metrics**
 
+The model is evaluated and the training and validation accuracy and loss is as shown,
+
+![alt text](experiments/Train_Val_728.png)
+
+**Metrics : Confusion Matrix**
+
+![alt text](experiments/CM_728_red.jpg)
 
 
