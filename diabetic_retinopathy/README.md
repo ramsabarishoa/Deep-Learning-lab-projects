@@ -22,16 +22,23 @@ The sequence of the codeflow is as follows:
 
 # Results
 
-**----------------------------------------------**  
+**-----------------------------------------------------**  
 **The overall test accuracy obtained is 72.81%.**  
-**----------------------------------------------**  
+**-----------------------------------------------------**  
 
 
 **1.  Input Pipeline**  
+
+The following operations are performed on the input image,
 - Resizing the image to 256x256(img_height x img_width) without any distortion.  
-- Crop the image borders  
+- Cropping the image borders  
 
 ![alt text](experiments/Resized.png)
+
+Binarization and balancing the dataset with **label 0(NRDR)** and **label 1(RDR)**,
+
+| ![alt text](experiments/hist1.png) | ![alt text](experiments/hist2.png) | ![alt text](experiments/hist3.png) |
+|------------------------------------|------------------------------------|------------------------------------|
 
 **2.  Data Augmentation**
 
@@ -75,6 +82,12 @@ The model is evaluated and the training and validation accuracy and loss is as s
 
 The following two techniques have been used to visualize the images,  
 - Grad-CAM
-- Grad-CAM + Guided Backpropagation Output
+- Grad-CAM + Guided Backpropagation  
+
+| ![alt text](experiments/grad_cam_3.png) |
+|-----------------------------------------|
+| ![alt text](experiments/grad_cam_2.png) |
+|-----------------------------------------|
+| ![alt text](experiments/grad_cam_4.png) |
 
 
