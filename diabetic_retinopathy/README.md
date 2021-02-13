@@ -47,10 +47,10 @@ Techniques used,
 
 Hyperparameter tuning is performed to obtain a consistent model architecture,  
 
-• HP_OPTIMIZER  
-• HP_EPOCHS  
-• HP_DENSE_LAYER  
-• HP_DROPOUT  
+- HP_OPTIMIZER 
+- HP_EPOCHS  
+- HP_DENSE_LAYER  
+- HP_DROPOUT  
 
 | ![alt text](experiments/Acc_hparams.png) | ![alt text](experiments/acc_Hparams.png) |
 |--------------------------------------|------------------------------------------|
@@ -69,6 +69,12 @@ The model is evaluated and the training and validation accuracy and loss is as s
 
 **Metrics : Confusion Matrix**
 
-![alt text](experiments/CM_728_red.jpg)
+![alt text](experiments/CM_728.jpg)
+
+**6. Deep Visualization**
+
+The following two techniques have been used to visualize the images,  
+- Grad-CAM
+- Grad-CAM + Guided Backpropagation Output
 
 
