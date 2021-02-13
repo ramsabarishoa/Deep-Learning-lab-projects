@@ -22,6 +22,11 @@ The sequence of the codeflow is as follows:
 
 # Results
 
+**----------------------------------------------**
+**The overall test accuracy obtained is 72.81%.**
+**----------------------------------------------**
+
+
 **1.  Input Pipeline**  
 - Resizing the image to 256x256(img_height x img_width) without any distortion.  
 - Crop the image borders  
@@ -41,6 +46,7 @@ Techniques used,
 **3. Hyperparameter Parameter Tuning used HParams**  
 
 Hyperparameter tuning is performed to obtain a consistent model architecture,  
+
 • HP_OPTIMIZER  
 • HP_EPOCHS  
 • HP_DENSE_LAYER  
@@ -51,4 +57,11 @@ Hyperparameter tuning is performed to obtain a consistent model architecture,
 
 **4. Model Architecture**  
 
-The following architecture has been used,  
+The following architecture has been used, 
+
+![alt text](experiments/Model_Architecture.jpg)
+
+**5. Evaluation and Metrics**
+
+
+
