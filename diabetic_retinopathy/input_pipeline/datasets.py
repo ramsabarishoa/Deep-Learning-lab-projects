@@ -112,7 +112,7 @@ class data_preparation:
 '''Flag: debug_mode_input_pipeline helps in visualising the necessary images'''
 
 load = data_preparation()
-dataset_path = input("Enter the path for the undataset and unzip the contents: ")
+dataset_path = input("Enter the path for the dataset. Please unzip the contents of the dataset before loading the folder path: ")
 Debug = '''The Debug option here helps in analysing the histograms of the dataframes(train and test).
 It also displays the format of the data in the .csv files'''
 print(Debug)
