@@ -20,7 +20,6 @@ def preprocess(image, label):
         Resizing to 256*256
         Cropping to the image borders
         Normalizing'''
-
   img_train = tf.io.read_file(image) #Load the image
   img_decoded = tf.io.decode_jpeg(img_train)
   img_cropped = tf.image.central_crop(img_decoded, central_fraction=0.95) #Remove the outer border and maintain the central region of the image
@@ -34,7 +33,6 @@ def preprocess(image, label):
 def build_dataset(images, labels):
     
   '''Function to create an efficient input pipeline in tensorflow using tf.data.Dataset'''
-
   AUTOTUNE = tf.data.experimental.AUTOTUNE
   dataset = tf.data.Dataset.from_tensor_slices((images, labels))
   dataset = dataset.cache()
@@ -66,8 +64,7 @@ def to_train_datagen():
 # The generated dataset is further passed for data augmentation
 train_image_array, train_label_array = to_train_datagen()
 
-# Data Augmentation using the ImageDataGene
-rator
+# Data Augmentation using the ImageDataGenerator
 # This is only done for the train images
 train_datagen = ImageDataGenerator(rotation_range=30,
                                    width_shift_range=0.2,
@@ -84,7 +81,8 @@ val_generator = val_datagen.flow(val_img, val_labels_list, shuffle=False,
                                    batch_size=batch_size)
 
 
-
+# Visualization of the resized and cropped image
+# Visualization of the augmented images
 debug_mode_input_pipeline_processing = int(input('Enter 1 for enabling debug option(DEBUG_INPUT_PIPELINE_PREPROCESSING) else enter 0 :'))
 if debug_mode_input_pipeline_processing == 1:
   test_image_path = input('Please enter the path for test image:')
