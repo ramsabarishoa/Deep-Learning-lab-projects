@@ -5,7 +5,6 @@ import numpy as np
 from input_pipeline.datasets import load
 import matplotlib.pyplot as plt
 
-print('Importing Successful')
 print('Tensorflow version used here is : ', tf.__version__)
 
 #Define Constants
@@ -44,7 +43,8 @@ def build_dataset(images, labels):
   dataset = dataset.prefetch(AUTOTUNE)
  
   return dataset
-#
+
+# The train and validation images and labels array 
 train_images_list, train_labels_list, val_images_list, val_labels_list = load.to_preprocessing()
 val_img = np.array([img_to_array(load_img(img, target_size=(img_height, img_width)))for img in val_images_list]).astype('float32')
 val_labels_list = np.array(val_labels_list)
@@ -53,6 +53,8 @@ train_dataset = build_dataset(train_images_list, train_labels_list)
 #print(tf.data.experimental.cardinality(train_dataset).numpy())
 
 def to_train_datagen():
+    
+  '''Function to create a train dataset'''
   for image, label in train_dataset:
     image_array = image.numpy()
     label_array = label.numpy()
@@ -61,17 +63,22 @@ def to_train_datagen():
 
   return image_array, label_array
 
+# The generated dataset is further passed for data augmentation
 train_image_array, train_label_array = to_train_datagen()
 
-# Create train generator.
+# Data Augmentation using the ImageDataGene
+rator
+# This is only done for the train images
 train_datagen = ImageDataGenerator(rotation_range=30,
                                    width_shift_range=0.2,
                                    height_shift_range=0.2,
+                                   zoom_range=0.001,
                                    horizontal_flip = 'true')
 train_generator = train_datagen.flow(train_image_array, train_label_array,
-                                     shuffle=False, batch_size=batch_size)
+                                     shuffle=True, batch_size=batch_size)
 
 # Create validation generator
+# No Data Augmentation is performed
 val_datagen = ImageDataGenerator(rescale = 1./255)
 val_generator = val_datagen.flow(val_img, val_labels_list, shuffle=False,
                                    batch_size=batch_size)
