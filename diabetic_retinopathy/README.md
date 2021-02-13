@@ -91,10 +91,8 @@ The following two techniques have been used to visualize the images,
 - Grad-CAM
 - Grad-CAM + Guided Backpropagation  
 
-| ![alt text](experiments/grad_cam_3.png) |
+![alt text](experiments/grad_cam_3.png)  
 
-| ![alt text](experiments/grad_cam_2.png) |
+![alt text](experiments/grad_cam_2.png)  
 
-| ![alt text](experiments/grad_cam_4.png) |
-
-
+![alt text](experiments/grad_cam_4.png) 
