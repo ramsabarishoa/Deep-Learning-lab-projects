@@ -44,6 +44,7 @@ for iname, iclass in df_test.itertuples(index=False):
         img = tf.reshape(img, [1, N_img_height, N_img_width,3])
         x = model.predict(img)
         predicted_label = np.argmax(x)
+        predicted_label_list.append(predicted_label)
 
 test_images_list = tf.convert_to_tensor(test_images_list)
 test_labels = tf.convert_to_tensor(test_labels)
