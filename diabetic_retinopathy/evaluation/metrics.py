@@ -31,34 +31,33 @@ df_test = df_test.iloc[:, : 2]
 test_images_list = []
 test_labels = []
 predicted_label_list = []
-for tname, tclass in df_test.itertuples(index=False):
-  for ft in test_images:
-    if os.path.basename(ft) == tname:
-      #print(ft,tname,tclass)
-      t_img = tf.io.read_file(ft) #Read the test image
-      t_img_decoded = tf.io.decode_jpeg(t_img)
 
-      t_img_cropped = tf.image.central_crop(t_img_decoded, central_fraction=0.95)
-      t_img_cropped_bound = tf.image.crop_to_bounding_box(t_img_cropped, 0 , 0 , target_height = 2700, target_width = 3580)
-      
-      t_image_cast = tf.cast(t_img_cropped_bound, tf.float32) 
-      t_image_cast = t_image_cast / 255.0
-      t_image_resized = tf.image.resize(t_image_cast,size=(N_img_height, N_img_width))
-      t_image_reshape = tf.reshape(t_image_resized, [1, N_img_height, N_img_width, 3])
-      x = mdl.predict(t_image_resized) #Predict the label using the compiled model
-      predicted_label = np.argmax(x)
-      predicted_label_list.append(predicted_label) #Append all the predicted labels to the list
-    
-      test_images_list.append(t_image_resized)
-      test_labels.append(tclass)
+for iname, iclass in df_test.itertuples(index=False):
+    for file in test_images:
+      if os.path.basename(file) == iname:
+        img = tf.io.read_file(file)
+        img = tf.io.decode_jpeg(img)
+        img = tf.cast(img,tf.float32) / 255
+        img = tf.image.resize_with_pad(img, N_img_height, N_img_width, antialias=True)
+        test_images_list.append(img)
+        test_labels.append(iclass)
+        img = tf.reshape(img, [1, N_img_height, N_img_width,3])
+        x = model.predict(img)
+        predicted_label = np.argmax(x)
 
 test_images_list = tf.convert_to_tensor(test_images_list)
 test_labels = tf.convert_to_tensor(test_labels)
 
+#Evaluate the model and print the test accuracy
+model.evaluate(test_images_list, test_labels)
+
+#Append a predicted label column
 df_test['Predicted Class'] = predicted_label_list
 df_test['Result'] = np.where(df_test['Retinopathy grade'] == df_test['Predicted Class'], 'Correct Prediction', 'Incorrect Prediction')
 #print(df_test)
 df_test['Result'].value_counts() #The correct and incorrect labels are listed
+
+#Confusion Matrix Plot
 cm = confusion_matrix(df_test['Retinopathy grade'],df_test['Predicted Class']) #Plot the confusion matrix
 plt.figure(figsize = (10,5))
 plt.title('Confusion Matrix')
