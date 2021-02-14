@@ -26,7 +26,7 @@ else:
         
 def Trainer(epochs):
     """Function to train the compiled model based on the dataset inputs and number of epochs"""
-    epochs = epochs
+    epochs = EPOCHS
     history = mdl.fit(
         train_generator,
         validation_data=val_generator,
@@ -44,7 +44,7 @@ def Trainer(epochs):
 
     return history
 print(''' ***************************Start Training************************''')
-epochs = 150
+EPOCHS = 150
 
 history = Trainer(epochs)
 print(''' ***************************End Training************************''')
