@@ -8,7 +8,7 @@ from input_pipeline.datasets import load
 import numpy as np
 from evaluation.eval import mdl
 import matplotlib.pyplot as plt
-from input_pipeline.preprocessing import img_width,img_height
+from input_pipeline.preprocessing import N_img_width, N_img_height
 from input_pipeline.datasets import dataset_path
 import seaborn as sb
 import os
@@ -43,8 +43,8 @@ for tname, tclass in df_test.itertuples(index=False):
       
       t_image_cast = tf.cast(t_img_cropped_bound, tf.float32) 
       t_image_cast = t_image_cast / 255.0
-      t_image_resized = tf.image.resize(t_image_cast,size=(img_height,img_width))
-      t_image_reshape = tf.reshape(t_image_resized, [1,256,256,3])
+      t_image_resized = tf.image.resize(t_image_cast,size=(N_img_height, N_img_width))
+      t_image_reshape = tf.reshape(t_image_resized, [1, N_img_height, N_img_width, 3])
       x = mdl.predict(t_image_resized) #Predict the label using the compiled model
       predicted_label = np.argmax(x)
       predicted_label_list.append(predicted_label) #Append all the predicted labels to the list
