@@ -3,7 +3,7 @@
 import tensorflow as tf
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from keras.models import Sequential
-from input_pipeline.preprocessing import img_width, img_height
+from input_pipeline.preprocessing import N_img_width, N_img_height
 
 print('------------------')
 print('Model Architecture')
@@ -47,7 +47,7 @@ def model(input_shape, kernel_size, pool_size, n_classes, dropout_rate_1, dropou
 
     return model
 
-mdl = model((img_height, img_width, 3), (3, 3), (2, 2), 2, 0.4, 0.5)
+mdl = model((N_img_height, N_img_width, 3), (3, 3), (2, 2), 2, 0.4, 0.5)
 print('------------------------------------------Start------------------------------------------')
 print('Printing the Model Summary')
 print(mdl.summary())
