@@ -1,5 +1,5 @@
-'''This file aids in data preprocessing by resizing, cropping and data augmentation'''
-
+'''This file aids in data preprocessing by resizing, 
+cropping and data augmentation'''
 
 #Importing
 import tensorflow as tf
