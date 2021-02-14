@@ -11,7 +11,7 @@ from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from keras.models import Sequential
 from keras import optimizers
 from tensorboard.plugins.hparams import api as hp
-from input_pipeline.preprocessing import train_generator, val_generator
+from input_pipeline.preprocessing import train_generator, val_generator, img_height, img_width
 from evaluation.metrics import test_images_list, test_labels
 
 #Define the hyperparameters
@@ -34,7 +34,7 @@ def train_test_model(hparams):
   model = Sequential()
   model.add(Conv2D(8, kernel_size=(3, 3),strides =2 ,
                  activation='relu', 
-                 input_shape=(256,256,3)))
+                 input_shape=(img_height, img_width, 3)))
   model.add(MaxPooling2D(pool_size=(2, 2)))
 
   model.add(Conv2D(16, kernel_size=(3, 3),strides =2,
