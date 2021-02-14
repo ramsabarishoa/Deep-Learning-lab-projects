@@ -46,5 +46,5 @@ def Trainer(epochs):
 print(''' ***************************Start Training************************''')
 EPOCHS = 150
 
-history = Trainer(epochs)
+history = Trainer(EPOCHS)
 print(''' ***************************End Training************************''')
