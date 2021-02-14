@@ -12,7 +12,7 @@ def evaluate(mdl):
     loss = history.history['loss']
     val_loss = history.history['val_loss']
 
-    epochs_range = range(epochs)
+    epochs_range = range(EPOCHS)
 
     plt.figure(figsize=(20, 7))
     plt.subplot(1, 2, 1)
