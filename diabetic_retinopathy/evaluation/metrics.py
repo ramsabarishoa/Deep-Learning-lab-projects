@@ -9,6 +9,7 @@ import numpy as np
 from evaluation.eval import mdl
 import matplotlib.pyplot as plt
 from input_pipeline.preprocessing import img_width,img_height
+from input_pipeline.datasets import dataset_path
 import seaborn as sb
 import os
 import glob
@@ -17,9 +18,9 @@ import pandas as pd
 """Metrics : Confusion Matrix to predict the model test results"""
 
 #The test images are loaded along with their ground truths
-test_images = glob.glob("/home/swetha/IDRID_dataset/images/images/test/*.jpg")
-print('Total number of training images:', len(test_images))
-df_test = pd.read_csv('/home/swetha/IDRID_dataset/labels/test.csv')
+test_images = glob.glob(dataset_path + "/images/test/*.jpg")
+print('Total number of test images:', len(test_images))
+df_test = pd.read_csv(dataset_path + '/labels/test.csv')
 df_test['Retinopathy grade'] = df_test['Retinopathy grade'].replace([0, 1, 2, 3, 4], [0, 0, 1, 1, 1])
 df_test['Image name'] = df_test['Image name'] + '.jpg'
 df_test = df_test.drop_duplicates()
@@ -29,6 +30,7 @@ df_test = df_test.iloc[:, : 2]
 
 test_images_list = []
 test_labels = []
+predicted_label_list = []
 for tname, tclass in df_test.itertuples(index=False):
   for ft in test_images:
     if os.path.basename(ft) == tname:
@@ -41,9 +43,9 @@ for tname, tclass in df_test.itertuples(index=False):
       
       t_image_cast = tf.cast(t_img_cropped_bound, tf.float32) 
       t_image_cast = t_image_cast / 255.0
-      t_image_resized = tf.image.resize(t_image_cast,size=(img_ht,img_wd))
+      t_image_resized = tf.image.resize(t_image_cast,size=(img_height,img_width))
       t_image_reshape = tf.reshape(t_image_resized, [1,256,256,3])
-      x = model.predict(t_image_resized) #Predict the label using the compiled model
+      x = mdl.predict(t_image_resized) #Predict the label using the compiled model
       predicted_label = np.argmax(x)
       predicted_label_list.append(predicted_label) #Append all the predicted labels to the list
     
