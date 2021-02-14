@@ -57,4 +57,6 @@ if __name__ == "__main__":
     import input_pipeline.preprocessing
     import models.layers
     import evaluation.eval
+    import evaluation.metrics
+    import evaluation.deep_visualization_grad_cam
     app.run(main)
