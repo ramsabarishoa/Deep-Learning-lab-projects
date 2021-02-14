@@ -21,4 +21,6 @@ Please choose the project directory and follow the instructions in their respect
 The requirements.txt file contains the necessary packages that are required in common for both the projects.
 Please make sure to check the same before executing the projects.
 The following command can be used to install all packages from the requirements.txt file.  
-$ pip install -r requirements.txt
+
+| $ pip install -r requirements.txt |
+|-----------------------------------|
