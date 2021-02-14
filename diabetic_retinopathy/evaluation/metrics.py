@@ -42,7 +42,7 @@ for iname, iclass in df_test.itertuples(index=False):
         test_images_list.append(img)
         test_labels.append(iclass)
         img = tf.reshape(img, [1, N_img_height, N_img_width,3])
-        x = model.predict(img)
+        x = mdl.predict(img)
         predicted_label = np.argmax(x)
         predicted_label_list.append(predicted_label)
 
@@ -50,7 +50,7 @@ test_images_list = tf.convert_to_tensor(test_images_list)
 test_labels = tf.convert_to_tensor(test_labels)
 
 #Evaluate the model and print the test accuracy
-model.evaluate(test_images_list, test_labels)
+mdl.evaluate(test_images_list, test_labels)
 
 #Append a predicted label column
 df_test['Predicted Class'] = predicted_label_list
@@ -63,4 +63,5 @@ cm = confusion_matrix(df_test['Retinopathy grade'],df_test['Predicted Class']) #
 plt.figure(figsize = (10,5))
 plt.title('Confusion Matrix')
 sb.heatmap(cm, cmap="Blues", annot=True,annot_kws={"size": 16})
+plt.show()
 print('Test Accuracy:',metrics.accuracy_score(df_test['Retinopathy grade'], df_test['Predicted Class'])) #Obtain the test accuracy
