@@ -6,6 +6,7 @@
 
 Visualize the results on tensorboard'''
 
+import tensorflow as tf
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from keras.models import Sequential
 from keras import optimizers
