@@ -16,10 +16,14 @@ checkpoint_dir = os.path.dirname(checkpoint_path)
 if not os.path.exists(path_to_save_model):
     pass
 else:
-    # Create a callback that saves the model's weights
-    cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path,
+    try:
+        # Create a callback that saves the model's weights
+        cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path,
                                                  save_weights_only=True,
                                                  verbose=1)
+    except:
+        print('Path Exception raised') 
+        
 def Trainer(epochs):
     """Function to train the compiled model based on the dataset inputs and number of epochs"""
     epochs = epochs
@@ -33,7 +37,10 @@ def Trainer(epochs):
     if not os.path.exists(path_to_save_model):
         pass
     else:
-        mdl.save(path_to_save_model + '/' + 'DRD_Model.h5')
+        try:
+            mdl.save(path_to_save_model + '/' + 'DRD_Model.h5')
+        except:
+            print('Path Exception raised')
 
     return history
 print(''' ***************************Start Training************************''')
