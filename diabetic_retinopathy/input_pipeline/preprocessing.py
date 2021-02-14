@@ -1,3 +1,7 @@
+'''This file aids in data preprocessing by resizing, cropping and data augmentation'''
+
+
+#Importing
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
 from keras.preprocessing.image import img_to_array, load_img
@@ -11,7 +15,6 @@ print('Tensorflow version used here is : ', tf.__version__)
 batch_size = 32
 img_height = 256
 img_width = 256
-
 
 def preprocess(image, label):
     
@@ -97,6 +100,7 @@ if debug_mode_input_pipeline_processing == 1:
   plt.title('Test Image after decoding and resizing')
   plt.show()
 
+  #Visualization of Data Augmented Images
   aug = [next(train_generator) for i in range(0, 5)]
   fig, ax = plt.subplots(1, 5, figsize=(15, 6))
   print('Labels:', [item[1][0] for item in aug])
