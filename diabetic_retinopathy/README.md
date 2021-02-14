@@ -36,11 +36,11 @@ The following operations are performed on the input image,
 - Resizing the image to 256x256(img_height x img_width) without any distortion.  
 - Cropping the image borders  
 
-![alt text](experiments/Resized.png)
+![alt text](experiments/images/Resized.png)
 
 Binarization and balancing the dataset with **label 0(NRDR)** and **label 1(RDR)**,
 
-| ![alt text](experiments/hist1.png) | ![alt text](experiments/hist2.png) | ![alt text](experiments/hist3.png) |
+| ![alt text](experiments/images/hist1.png) | ![alt text](experiments/images/hist2.png) | ![alt text](experiments/images/hist3.png) |
 |------------------------------------|------------------------------------|------------------------------------|
 
 **2.  Data Augmentation**
@@ -51,7 +51,7 @@ Techniques used,
 - Shift  
 - Horizontal and Vertical Flipping  
 
-![alt text](experiments/Augmented_Images.png)
+![alt text](experiments/images/Augmented_Images.png)
 
 **3. Hyperparameter Parameter Tuning using HParams**  
 
@@ -62,28 +62,28 @@ Hyperparameter tuning is performed to obtain a consistent model architecture,
 - HP_DENSE_LAYER  
 - HP_DROPOUT  
 
-| ![alt text](experiments/Acc_hparams.png) | ![alt text](experiments/acc_Hparams.png) |
+| ![alt text](experiments/imagesAcc_hparams.png) | ![alt text](experiments/images/acc_Hparams.png) |
 |--------------------------------------|------------------------------------------|
 
 **4. Model Architecture**  
 
 The following architecture has been used, 
 
-![alt text](experiments/Model_Architecture.jpg)
+![alt text](experiments/images/Model_Architecture.jpg)
 
 **Model Summary**
 
-![alt text](experiments/Model_Summary.png)
+![alt text](experiments/images/Model_Summary.png)
 
 **5. Evaluation and Metrics**
 
 The model is evaluated and the training and validation accuracy and loss is as shown,
 
-![alt text](experiments/Train_Val_728.png)
+![alt text](experiments/images/Train_Val_728.png)
 
 **Metrics : Confusion Matrix**
 
-![alt text](experiments/CM_728.jpg)
+![alt text](experiments/images/CM_728.jpg)
 
 **6. Deep Visualization**
 
@@ -91,8 +91,8 @@ The following two techniques have been used to visualize the images,
 - Grad-CAM
 - Grad-CAM + Guided Backpropagation  
 
-![alt text](experiments/grad_cam_3.png)  
+![alt text](experiments/images/grad_cam_3.png)  
 
-![alt text](experiments/grad_cam_2.png)  
+![alt text](experiments/images/grad_cam_2.png)  
 
-![alt text](experiments/grad_cam_4.png) 
+![alt text](experiments/images/grad_cam_4.png) 
