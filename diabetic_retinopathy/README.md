@@ -62,7 +62,7 @@ Hyperparameter tuning is performed to obtain a consistent model architecture,
 - HP_DENSE_LAYER  
 - HP_DROPOUT  
 
-| ![alt text](experiments/imagesAcc_hparams.png) | ![alt text](experiments/images/acc_Hparams.png) |
+| ![alt text](experiments/images/Acc_hparams.png) | ![alt text](experiments/images/acc_Hparams.png) |
 |--------------------------------------|------------------------------------------|
 
 **4. Model Architecture**  
