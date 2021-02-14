@@ -11,14 +11,14 @@ Here you can find the different options for debugging the code. Please select th
 These options enables the user for displaying the images, logs, etc..
 Also, please make sure to enter the correct dataset directory path.
 
-The sequence of the codeflow is as follows:
+The sequence of the codeflow in main.py is as follows:
 
 - An input pipeline is set-up initially  
 - A model architecture is built
 - Training of the model (Also, the saved model(DRD_model.h5) can be found in the experiments folder)  
 - Evaluation of the model (Test accuracy is computed here)  
 - Metrics - Confusion Matrix
-- Deep Visualization
+- Deep Visualization (Available here - evaluation/deep_visualization_grad_cam.py)
 - Other experimental results, logs and images are attached here
 
 - The **tune.py** file can be executed separately to configure and analyze the hyper-parameter tuning.
