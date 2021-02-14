@@ -1,51 +1,97 @@
-import logging
-import gin
-from ray import tune
+'''Start Hyper-parameter tuning
+- HP_OPTIMIZER
+- HP_EPOCHS
+- HP_DENSE_LAYER
+- HP_DROPOUT
 
-from input_pipeline.datasets import load
-from models.architectures import vgg_like
-from train import Trainer
-from utils import utils_params, utils_misc
+Visualize the results on tensorboard'''
+
+from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+from keras.models import Sequential
+from keras import optimizers
+from tensorboard.plugins.hparams import api as hp
+from input_pipeline.preprocessing import train_generator, val_generator
+from evaluation.metrics import test_images_list, test_labels
+
+#Define the hyperparameters
+HP_NUM_UNITS = hp.HParam('num_units', hp.Discrete([256, 512]))
+HP_DROPOUT = hp.HParam('dropout', hp.Discrete([0.3, 0.4, 0.5]))
+HP_OPTIMIZER = hp.HParam('optimizer', hp.Discrete(['adam','sgd']))
+HP_EPOCHS = hp.HParam('epochs',hp.Discrete([100, 150, 200]))
+
+METRIC_ACCURACY = 'accuracy'
+
+path_hparams = input('Enter the path to save the tuning logs: ')
+
+with tf.summary.create_file_writer(path_hparams + 'logs/hparam_tuning').as_default():
+  hp.hparams_config(
+      hparams = [HP_NUM_UNITS, HP_DROPOUT, HP_OPTIMIZER, HP_EPOCHS],
+      metrics=[hp.Metric(METRIC_ACCURACY, display_name='Accuracy')],
+  )
+
+def train_test_model(hparams):
+  model = Sequential()
+  model.add(Conv2D(8, kernel_size=(3, 3),strides =2 ,
+                 activation='relu', 
+                 input_shape=(256,256,3)))
+  model.add(MaxPooling2D(pool_size=(2, 2)))
+
+  model.add(Conv2D(16, kernel_size=(3, 3),strides =2,
+                 activation='relu'))
+  model.add(MaxPooling2D(pool_size=(2, 2)))
+
+  model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
+  model.add(MaxPooling2D(pool_size=(2, 2)))
+
+  model.add(Conv2D(128, kernel_size=(3, 3), activation='relu'))
+  model.add(MaxPooling2D(pool_size=(2, 2)))
+  model.add(Dropout(hparams[HP_DROPOUT]))
+  model.add(Flatten())
+  model.add(Dense(hparams[HP_NUM_UNITS], activation='relu'))
+  model.add(Dropout(0.5))
+  model.add(Dense(2, activation='softmax'))
+
+  model.compile(
+      optimizer=hparams[HP_OPTIMIZER],
+      loss='sparse_categorical_crossentropy',
+      metrics=['accuracy'],
+  )
+
+  #Obtain the train_generator and val_generator from the created input pipeline
+  model.fit(train_generator, validation_data=val_generator, epochs=hparams[HP_EPOCHS])
+
+  #Evaluate the model and obtain the test results
+  _, accuracy = model.evaluate(test_images_list, test_labels)
+  return accuracy
+
+def run(run_dir, hparams):
+  with tf.summary.create_file_writer(run_dir).as_default():
+    hp.hparams(hparams)  # record the values used in this trial
+    accuracy = train_test_model(hparams)
+    tf.summary.scalar(METRIC_ACCURACY, accuracy, step=1)
+
+session_num = 0
+for num_units in HP_NUM_UNITS.domain.values:
+  for dropout_rate in HP_DROPOUT.domain.values:
+    for optimizer in HP_OPTIMIZER.domain.values:
+      for epochs in HP_EPOCHS.domain.values:
+
+        hparams = {
+            HP_NUM_UNITS: num_units,
+            HP_DROPOUT: dropout_rate,
+            HP_OPTIMIZER: optimizer,
+            HP_EPOCHS: epochs,
+        }
+        run_name = "run-%d" % session_num
+        print('--- Starting trial: %s' % run_name)
+        print({h.name: hparams[h] for h in hparams})
+        run(path_hparams + '/hparam_tuning/' + run_name, hparams)
+        print(session_num)
+        session_num += 1
+        
 
 
-def train_func(config):
-    # Hyperparameters
-    bindings = []
-    for key, value in config.items():
-        bindings.append(f'{key}={value}')
-
-    # generate folder structures
-    run_paths = utils_params.gen_run_folder(','.join(bindings))
-
-    # set loggers
-    utils_misc.set_loggers(run_paths['path_logs_train'], logging.INFO)
-
-    # gin-config
-    gin.parse_config_files_and_bindings(['/mnt/home/repos/dl-lab-skeleton/diabetic_retinopathy/configs/config.gin'], bindings)
-    utils_params.save_config(run_paths['path_gin'], gin.config_str())
-
-    # setup pipeline
-    ds_train, ds_val, ds_test, ds_info = load()
-
-    # model
-    model = vgg_like(input_shape=ds_info.features["image"].shape, n_classes=ds_info.features["label"].num_classes)
-
-    trainer = Trainer(model, ds_train, ds_val, ds_info, run_paths)
-    for val_accuracy in trainer.train():
-        tune.report(val_accuracy=val_accuracy)
-
-
-analysis = tune.run(
-    train_func, num_samples=2, resources_per_trial={'gpu': 1, 'cpu': 4},
-    config={
-        "Trainer.total_steps": tune.grid_search([1e4]),
-        "vgg_like.base_filters": tune.choice([8, 16]),
-        "vgg_like.n_blocks": tune.choice([2, 3, 4, 5]),
-        "vgg_like.dense_units": tune.choice([32, 64]),
-        "vgg_like.dropout_rate": tune.uniform(0, 0.9),
-    })
-
-print("Best config: ", analysis.get_best_config(metric="val_accuracy"))
-
-# Get a dataframe for analyzing trial results.
-df = analysis.dataframe()
+# Visualizing on tensorboard
+# Commented out IPython magic to ensure Python compatibility.
+# %load_ext tensorboard
+# %tensorboard --logdir /content/drive/MyDrive/logs/hparam_tuning
