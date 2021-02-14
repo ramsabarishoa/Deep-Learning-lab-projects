@@ -21,11 +21,7 @@ The sequence of the codeflow in main.py is as follows:
 - Deep Visualization (Available here - evaluation/deep_visualization_grad_cam.py)
 - Other experimental results, logs and images are attached here
 
-- The **tune.py** file can be executed separately to configure and analyze the hyper-parameter tuning.
-
-The structure of the folder is as shown,  
-![](experiments/images/tree.png =100x100)  
-
+- The **tune.py** file can be executed separately to configure and analyze the hyper-parameter tuning.  
 
 # Results
 
