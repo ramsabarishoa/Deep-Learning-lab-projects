@@ -1,4 +1,8 @@
+'''''''''This file helps us in loading the required dataset.
+The data is split into training, validation and test sets.
+This is further sent for preprocessing.'''
 
+#Importing
 import logging
 import pandas as pd
 import zipfile
@@ -6,15 +10,16 @@ import glob, os
 import sys
 import matplotlib.pyplot as plt
 
+#Class functions
 class data_preparation:
     '''Class containing functions for loading the dataset'''
 
     def load(self, data_dir, DEBUG_INPUT_PIPELINE):
         '''Function to check the dataset path and load the ground truths.
         Classifies the labels into 0's and 1's
-        Plots the labels in Debug mode.'''
+        Plots the label histograms in Debug mode.'''
 
-        self.train_images = glob.glob(data_dir + "/images/train/*.jpg")
+        self.train_images = glob.glob(data_dir + "/images/train/*.jpg") #Lists all the train images
         print('Total number of training images:', len(self.train_images))
 
         self.df_train = pd.read_csv(data_dir + '/labels/train.csv')
