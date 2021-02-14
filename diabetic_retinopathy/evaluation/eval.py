@@ -2,7 +2,7 @@
 '''
 import tensorflow as tf
 from models.layers import mdl
-from train import epochs, history
+from train import EPOCHS, history
 import matplotlib.pyplot as plt
 
 def evaluate(mdl):
