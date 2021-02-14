@@ -47,7 +47,7 @@ def build_dataset(images, labels):
 
 # The train and validation images and labels array 
 train_images_list, train_labels_list, val_images_list, val_labels_list = load.to_preprocessing()
-val_img = np.array([img_to_array(load_img(img, target_size=(img_height, img_width)))for img in val_images_list]).astype('float32')
+val_img = np.array([img_to_array(load_img(img, target_size=(N_img_height, N_img_width)))for img in val_images_list]).astype('float32')
 val_labels_list = np.array(val_labels_list)
 train_dataset = build_dataset(train_images_list, train_labels_list)
 #Debug
