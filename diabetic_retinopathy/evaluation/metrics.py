@@ -27,18 +27,31 @@ df_test = df_test.iloc[:, : 2]
 #Debug
 #print(df_test)
 
-predicted_label_list = []
-for iname, iclass in df_test.itertuples(index=False):
-    for file in test_images:
-      if os.path.basename(file) == iname:
-        img = tf.io.read_file(file)
-        img = tf.io.decode_jpeg(img)
-        img = tf.cast(img,tf.float32) / 255
-        img = tf.image.resize_with_pad(img, img_height, img_width, antialias=True)
-        img = tf.reshape(img, [1, img_height, img_width, 3])
-        x = mdl.predict(img)
-        predicted_label = np.argmax(x) #The predicted label is appeneded to list after model evaluation
-        predicted_label_list.append(predicted_label)
+test_images_list = []
+test_labels = []
+for tname, tclass in df_test.itertuples(index=False):
+  for ft in test_images:
+    if os.path.basename(ft) == tname:
+      #print(ft,tname,tclass)
+      t_img = tf.io.read_file(ft) #Read the test image
+      t_img_decoded = tf.io.decode_jpeg(t_img)
+
+      t_img_cropped = tf.image.central_crop(t_img_decoded, central_fraction=0.95)
+      t_img_cropped_bound = tf.image.crop_to_bounding_box(t_img_cropped, 0 , 0 , target_height = 2700, target_width = 3580)
+      
+      t_image_cast = tf.cast(t_img_cropped_bound, tf.float32) 
+      t_image_cast = t_image_cast / 255.0
+      t_image_resized = tf.image.resize(t_image_cast,size=(img_ht,img_wd))
+      t_image_reshape = tf.reshape(t_image_resized, [1,256,256,3])
+      x = model.predict(t_image_resized) #Predict the label using the compiled model
+      predicted_label = np.argmax(x)
+      predicted_label_list.append(predicted_label) #Append all the predicted labels to the list
+    
+      test_images_list.append(t_image_resized)
+      test_labels.append(tclass)
+
+test_images_list = tf.convert_to_tensor(test_images_list)
+test_labels = tf.convert_to_tensor(test_labels)
 
 df_test['Predicted Class'] = predicted_label_list
 df_test['Result'] = np.where(df_test['Retinopathy grade'] == df_test['Predicted Class'], 'Correct Prediction', 'Incorrect Prediction')
