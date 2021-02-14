@@ -23,8 +23,8 @@ The sequence of the codeflow in main.py is as follows:
 
 - The **tune.py** file can be executed separately to configure and analyze the hyper-parameter tuning.
 
-The structure of the folder is as shown,
-![alt text](experiments/images/tree.png)
+The structure of the folder is as shown,  
+![alt text](experiments/images/tree.png =200x200)  
 
 
 # Results
