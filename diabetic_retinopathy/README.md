@@ -69,7 +69,7 @@ Hyperparameter tuning is performed to obtain a consistent model architecture,
 
 The following architecture has been used, 
 
-![alt text](experiments/images/Model_Architecture.jpg)
+![alt text](experiments/images/Model_Architecture.png)
 
 **Model Summary**
 
