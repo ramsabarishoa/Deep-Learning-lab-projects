@@ -25,7 +25,7 @@ The sequence of the codeflow in main.py is as follows:
 # Results
 
 **--------------------------------------------------------------------**  
-**The overall test accuracy obtained is 74.87%.**  
+**The overall test accuracy obtained is 77.79%.**  
 **--------------------------------------------------------------------**  
 
 
@@ -78,61 +78,30 @@ The following operations are performed on the input image,
 | ![alt text](experiments/images/Stand_to_lie.png) | ![alt text](experiments/images/Lie_to_stand.png) |
 
 
+**2.  Model Architecture**
 
+The model architecture is as follows,
 
+![alt text](experiments/images/Model_Architecture.png)
 
-
-
-**2.  Data Augmentation**
-
-Techniques used,  
-- Rotation  
-- Zoom  
-- Shift  
-- Horizontal and Vertical Flipping  
-
-![alt text](experiments/images/Augmented_Images.png)
+![alt text](experiments/images/Model_Summary.png)
 
 **3. Hyperparameter Parameter Tuning using HParams**  
 
 Hyperparameter tuning is performed to obtain a consistent model architecture,  
 
-- HP_OPTIMIZER 
+- HP_LSTM_NEURONS
 - HP_EPOCHS  
 - HP_DENSE_LAYER  
 - HP_DROPOUT  
-
-| ![alt text](experiments/images/Acc_hparams.png) | ![alt text](experiments/images/acc_Hparams.png) |
-|--------------------------------------|------------------------------------------|
-
-**4. Model Architecture**  
-
-The following architecture has been used, 
-
-![alt text](experiments/images/Model_Architecture.png)
-
-**Model Summary**
-
-![alt text](experiments/images/Model_Summary.png)
 
 **5. Evaluation and Metrics**
 
 The model is evaluated and the training and validation accuracy and loss is as shown,
 
-![alt text](experiments/images/Train_Val_728.png)
+![alt text](experiments/images/Train_and_Validation_Accuracy.png)
 
 **Metrics : Confusion Matrix**
 
-![alt text](experiments/images/CM_728.jpg)
 
-**6. Deep Visualization**
 
-The following two techniques have been used to visualize the images,  
-- Grad-CAM
-- Grad-CAM + Guided Backpropagation  
-
-![alt text](experiments/images/grad_cam_3.png)  
-
-![alt text](experiments/images/grad_cam_2.png)  
-
-![alt text](experiments/images/grad_cam_4.png) 
