@@ -1,0 +1,2 @@
+Please find paper for Human Activity Recognition Project
+Requirement : PDF viewer
