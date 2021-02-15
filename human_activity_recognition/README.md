@@ -82,9 +82,9 @@ The following operations are performed on the input image,
 
 The model architecture is as follows,
 
-![alt text](experiments/images/Model_Architecture.png)
+![alt text](experiments/images/Model_Architecture_Draw.png)
 
-![alt text](experiments/images/Model_Summary.png)
+![alt text](experiments/images/Model_Architecture.png)
 
 **3. Hyperparameter Parameter Tuning using HParams**  
 
