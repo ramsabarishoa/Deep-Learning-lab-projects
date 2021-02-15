@@ -53,8 +53,14 @@ The following operations are performed on the input image,
 | ![alt text](experiments/images/Walking.png) | ![alt text](experiments/images/Walking_Upstairs.png) |
 
 
+| **WALKING_DOWNSTAIRS for User01_Exp01**                    | **SITTING for User01_Exp01**                    |
+|---------------------------------------------|---------------------------------------------|
+| ![alt text](experiments/images/Walking_Downstairs.png) | ![alt text](experiments/images/Sitting.png) |
 
 
+| **STANDING for User01_Exp01**                    | **LAYING for User01_Exp01**                    |
+|---------------------------------------------|---------------------------------------------|
+| ![alt text](experiments/images/Standing.png) | ![alt text](experiments/images/LAYING.png) |
 
 
 
