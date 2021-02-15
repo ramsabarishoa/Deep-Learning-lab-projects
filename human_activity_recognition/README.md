@@ -48,8 +48,9 @@ The following operations are performed on the input image,
 
 **Visualization of the 12 Activities**  
 
-| ![alt text](experiments/images/Walking.png) | ![alt text](experiments/images/Sitting.png) |
+| **WALKING for User01_Exp01**                    | **WALKING_UPSTAIRS for User01_Exp01**                    |
 |---------------------------------------------|---------------------------------------------|
+| ![alt text](experiments/images/Walking.png) | ![alt text](experiments/images/Walking_Upstairs.png) |
 
 
 
