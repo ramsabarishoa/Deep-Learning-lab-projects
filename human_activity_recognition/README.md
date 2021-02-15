@@ -63,11 +63,19 @@ The following operations are performed on the input image,
 | ![alt text](experiments/images/Standing.png) | ![alt text](experiments/images/LAYING.png) |
 
 
+| **STAND_TO_SIT for User01_Exp01**                    | **SIT_TO_STAND for User01_Exp01**                    |
+|---------------------------------------------|---------------------------------------------|
+| ![alt text](experiments/images/Stand_to_Sit.png) | ![alt text](experiments/images/Sit_to_stand.png) |
 
 
+| **SIT_TO_LIE for User01_Exp01**                    | **LIE_TO_SIT for User01_Exp01**                    |
+|---------------------------------------------|---------------------------------------------|
+| ![alt text](experiments/images/Sit_to_lie.png) | ![alt text](experiments/images/lie_to_sit.png) |
 
 
-
+| **STAND_TO_LIE for User01_Exp01**                    | **LIE_TO_STAND for User01_Exp01**                    |
+|---------------------------------------------|---------------------------------------------|
+| ![alt text](experiments/images/Stand_to_lie.png) | ![alt text](experiments/images/Lie_to_stand.png) |
 
 
 
