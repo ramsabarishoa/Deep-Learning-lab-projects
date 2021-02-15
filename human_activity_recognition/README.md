@@ -95,6 +95,8 @@ Hyperparameter tuning is performed to obtain a consistent model architecture,
 - HP_DENSE_LAYER  
 - HP_DROPOUT  
 
+![alt text](experiments/images/HP_tuning.png)
+
 **5. Evaluation and Metrics**
 
 The model is evaluated and the training and validation accuracy and loss is as shown,
