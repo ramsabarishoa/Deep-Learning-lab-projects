@@ -29,7 +29,7 @@ The sequence of the codeflow in main.py is as follows:
 **--------------------------------------------------------------------**  
 
 
-**1.  Input Pipeline **  
+**1.  Input Pipeline**  
 
 The following operations are performed on the input image,
 
@@ -40,14 +40,16 @@ The following operations are performed on the input image,
 - Z-Score Normalization is performed on the 6 channel data(tri-axial accelerometer and tri-axial gyroscope)  
 - One hot encoding of the labels - Unlabeled data is marked as 0
 
-**Data Visualization for the training data for User01_Exp01**
-![alt text](experiments/images/Train.png)
+**Data Visualization for the training data for User01_Exp01**  
+![alt text](experiments/images/Train.png)  
 
-**Data Visualization for the test data for User37_Exp18**
-![alt text](experiments/images/Test.png)
+**Data Visualization for the test data for User37_Exp18**  
+![alt text](experiments/images/Testing.png)
 
-**Visualization of the 12 Activities**
+**Visualization of the 12 Activities**  
 
+| ![alt text](experiments/images/Walking.png) | ![alt text](experiments/images/Sitting.png) |
+|---------------------------------------------|---------------------------------------------|
 
 
 
