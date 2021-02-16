@@ -1,0 +1,152 @@
+C:\ProgramData\Anaconda3\envs\DRD_Ram\python.exe C:/Users/ramsa/PycharmProjects/DRD_Ram/dl-lab-2020-team05-master/diabetic_retinopathy/main.py
+|--------------------------------------------------------------------------------------------|
+|Diabetic Retinopathy Detection Project - Team05                                             |
+|--------------------------------------------------------------------------------------------|
+|Team Members :                                                                              |
+|1.  Ram Sabarish Obla Amar Bapu     |st169693|  email ID:  st169693@stud.uni-stuttgart.de   |
+|2.  Swetha Lakshmana Murthy         |st169481|  email ID:  st169481@stud.uni-stuttgart.de   |
+|--------------------------------------------------------------------------------------------|
+The dataset used here is HAPT dataset. This contains a total of 30 subjects. There raw data is obtained from two interial
+sensors, accelerometer and gyroscope. Each user performs two experiments
+Folder structure of the dataset
+    ROOT_FOLDER(/home/user/.../HAPT Data Set)
+       |-------- RawData
+       |            |------ acc_exp01_user01.txt
+       |            |           
+       |            |------ gyro_exp61_user30.txt                 
+       |            |------ labels.txt
+       |                       
+       |                         
+       |
+       | -------- Train               
+       |             |
+       |             | ----- X_train.txt
+       |             | ----- y_train.txt
+       |             | ----- subject_id_train.txt
+       |
+       |-------- Test               
+       |             |
+       |             | ----- X_test.txt
+       |             | ----- y_test.txt
+       |             | ----- subject_id_test.txt
+       |
+       |
+       |------- activity_labels.txt
+       ........
+       ........
+    ```
+
+
+Pandas Version: 1.1.5
+Numpy Version: 1.19.2
+Tensorflow version: 2.3.0
+Enter the path for the dataset. Please unzip the contents of the dataset before loading the folder path: C:\Dl lab
+The Debug option here helps in visualizing and analysing the data(train and test).
+Enter 1 for enabling debug option(DEBUG_INPUT_PIPELINE) else enter 0 : 0
+==========================================================================================
+  Visualization of the signals can be found here with enabling the debug_mode_input_pipeline==1
+  Visualization of the training and test data set
+  =============================================================================================
+
+
+==========================================================================================
+  Visualization of the 12 activities can be found here with enabling the debug_mode_input_pipeline==1
+  This is for the train data
+  =============================================================================================
+
+
+The total number of acceleration files available:  61
+The total number of gyroscope files available:  61
+749274 227427 115571
+749274 227427 115571
+2021-02-16 01:13:05.621128: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+375
+5993
+------------------
+Model Architecture
+------------------
+------------------------------------------Start------------------------------------------
+Printing the Model Summary
+Model: "HAR_Model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         [(None, 250, 6)]          0         
+_________________________________________________________________
+lstm (LSTM)                  (None, 250, 256)          269312    
+_________________________________________________________________
+dropout (Dropout)            (None, 250, 256)          0         
+_________________________________________________________________
+lstm_1 (LSTM)                (None, 250, 128)          197120    
+_________________________________________________________________
+dense (Dense)                (None, 250, 12)           1548      
+=================================================================
+Total params: 467,980
+Trainable params: 467,980
+Non-trainable params: 0
+_________________________________________________________________
+None
+------------------------------------------End------------------------------------------
+Enter the path for saving the model and checkpoints: C:\Dl lab
+ ***************************Start Training************************
+Epoch 1/15
+375/375 [==============================] - 155s 414ms/step - loss: 0.8182 - accuracy: 0.4947 - val_loss: 0.5871 - val_accuracy: 0.5735
+Epoch 2/15
+375/375 [==============================] - 188s 502ms/step - loss: 0.5056 - accuracy: 0.6286 - val_loss: 0.3334 - val_accuracy: 0.6947
+Epoch 3/15
+375/375 [==============================] - 170s 452ms/step - loss: 0.3613 - accuracy: 0.6644 - val_loss: 0.3599 - val_accuracy: 0.7131
+Epoch 4/15
+375/375 [==============================] - 157s 419ms/step - loss: 0.2812 - accuracy: 0.6919 - val_loss: 0.4222 - val_accuracy: 0.6769
+Epoch 5/15
+375/375 [==============================] - 156s 417ms/step - loss: 0.2567 - accuracy: 0.7041 - val_loss: 0.3602 - val_accuracy: 0.6887
+Epoch 6/15
+375/375 [==============================] - 159s 424ms/step - loss: 0.2174 - accuracy: 0.7192 - val_loss: 0.4236 - val_accuracy: 0.6906
+Epoch 7/15
+375/375 [==============================] - 157s 418ms/step - loss: 0.1942 - accuracy: 0.7237 - val_loss: 0.4080 - val_accuracy: 0.6925
+Epoch 8/15
+375/375 [==============================] - 156s 417ms/step - loss: 0.1923 - accuracy: 0.7261 - val_loss: 0.3506 - val_accuracy: 0.7192
+Epoch 9/15
+375/375 [==============================] - 157s 419ms/step - loss: 0.1798 - accuracy: 0.7265 - val_loss: 0.3488 - val_accuracy: 0.6793
+Epoch 10/15
+375/375 [==============================] - 157s 418ms/step - loss: 0.1615 - accuracy: 0.7353 - val_loss: 0.3856 - val_accuracy: 0.6862
+Epoch 11/15
+375/375 [==============================] - 199s 531ms/step - loss: 0.1649 - accuracy: 0.7379 - val_loss: 0.3261 - val_accuracy: 0.7369
+Epoch 12/15
+375/375 [==============================] - 140s 373ms/step - loss: 0.1601 - accuracy: 0.7381 - val_loss: 0.2897 - val_accuracy: 0.7216
+Epoch 13/15
+375/375 [==============================] - 133s 356ms/step - loss: 0.1431 - accuracy: 0.7424 - val_loss: 0.3475 - val_accuracy: 0.7272
+Epoch 14/15
+375/375 [==============================] - 163s 436ms/step - loss: 0.1432 - accuracy: 0.7379 - val_loss: 0.3441 - val_accuracy: 0.7159
+Epoch 15/15
+375/375 [==============================] - 138s 367ms/step - loss: 0.1514 - accuracy: 0.7423 - val_loss: 0.2575 - val_accuracy: 0.7254
+Path Exception raised
+ ***************************End Training************************
+114/114 [==============================] - 14s 121ms/step - loss: 0.1664 - accuracy: 0.7906
+test loss, test acc: [0.16635599732398987, 0.7905808687210083]
+C:\ProgramData\Anaconda3\envs\DRD_Ram\lib\site-packages\numpy\core\_asarray.py:83: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return array(a, dtype, copy=False, order=order)
+454500
+454500
+                    precision    recall  f1-score   support
+
+           WALKING       0.95      0.53      0.68    156486
+  WALKING_UPSTAIRS       0.83      0.97      0.90     48094
+WALKING_DOWNSTAIRS       0.82      0.92      0.87     45368
+           SITTING       0.92      0.93      0.93     58016
+          STANDING       0.56      0.98      0.71     58420
+            LAYING       0.95      0.98      0.96     61306
+      STAND_TO_SIT       0.54      0.57      0.56      4074
+      SIT_TO_STAND       0.58      0.76      0.66      3202
+        SIT_TO_LIE       0.73      0.57      0.64      4770
+        LIE_TO_SIT       0.48      0.79      0.60      4718
+      STAND_TO_LIE       0.30      0.70      0.42      5414
+      LIE_TO_STAND       0.50      0.40      0.44      4632
+
+          accuracy                           0.79    454500
+         macro avg       0.68      0.76      0.70    454500
+      weighted avg       0.85      0.79      0.79    454500
+
+Main Function
+
+Process finished with exit code 0
