@@ -23,13 +23,15 @@ METRIC_ACCURACY = 'accuracy'
 
 path_hparams = input('Enter the path to save the tuning logs: ')
 
+#The logs will be created and stored in the following path
 with tf.summary.create_file_writer(path_hparams + 'logs/hparam_tuning').as_default():
   hp.hparams_config(
       hparams = [HP_LSTM_NEURONS, HP_DROPOUT, HP_OPTIMIZER, HP_EPOCHS],
       metrics=[hp.Metric(METRIC_ACCURACY, display_name='Accuracy')],
   )
 
-def HP_mdl():
+ #Hyperparamter model definition
+def HParams_mdl():
   inputs = keras.Input(shape=(N_WindowSize,N_Features))
   x = layers.LSTM(hparams[HP_LSTM_NEURONS],return_sequences=True)(inputs)
   x = layers.Dropout(hparams[HP_DROPOUT])(x)
@@ -45,7 +47,7 @@ def run(run_dir, hparams):
     tf.summary.scalar(METRIC_ACCURACY, accuracy, step=1)
 
 def train_test_model(hparams):
-  mdl = HP_mdl()
+  mdl = HParams_mdl()
   opt = hparams[HP_OPTIMIZER]
   mdl.compile(loss=tf.keras.losses.categorical_crossentropy,
               optimizer=opt,
@@ -55,6 +57,7 @@ def train_test_model(hparams):
   _, accuracy = mdl.evaluate(r_test_ds)
   return accuracy
 
+#Start the sessions and run the trials according to the hyperparamter
 session_num = 0
 for optimizer in HP_OPTIMIZER.domain.values:
   for lstm_neurons in HP_LSTM_NEURONS.domain.values:
