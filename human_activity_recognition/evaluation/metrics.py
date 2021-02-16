@@ -6,6 +6,13 @@ from input_pipeline.data_preprocessing_visualization import r_test_ds, Activity_
 import numpy as np
 import tensorflow as tf
 
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import metrics
+import seaborn as sns
+from sklearn.metrics import classification_report, confusion_matrix
+print('Importing done')
+
 # Confusion Matrix Plotting
 predicted_label = []
 ground_truth = []
@@ -39,13 +46,6 @@ for index in range(0, len(predicted_label)):
 print(len(predicted_label_concat))
 print(len(ground_truth_concat))
 
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn import metrics
-import seaborn as sns
-from sklearn.metrics import classification_report, confusion_matrix
-
-
 # Confusion matrix
 confusion_matrix = metrics.confusion_matrix(ground_truth_concat, predicted_label_concat)
 # Normalized confusion matrix
@@ -69,4 +69,5 @@ plt.xlabel('Predicted label')
 plt.title('Normalized Confusion matrix')
 plt.show()
 
+#Print the classification report
 print(classification_report(ground_truth_concat, predicted_label_concat, target_names=Activity_Labels['activity']))
