@@ -32,5 +32,6 @@ def evaluate(mdl):
 evaluate(mdl)
 
 #Evaluate the model
+print('Model Evaluation and test accuracy is calculated')
 results = mdl.evaluate(r_test_ds)
 print('test loss, test acc:', results)
