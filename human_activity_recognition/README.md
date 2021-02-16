@@ -41,6 +41,7 @@ The following operations are performed on the input image,
 - Z-Score Normalization is performed on the 6 channel data(tri-axial accelerometer and tri-axial gyroscope)  
 - One hot encoding of the labels - Unlabeled data is marked as 0
 
+In all the visualized graphs the x-axis denote here time in seconds, y-axis denote the Accelerometer and Gyroscope values
 **Data Visualization for the training data for User01_Exp01**  
 ![alt text](experiments/images/Train.png)  
 
