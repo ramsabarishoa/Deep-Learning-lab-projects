@@ -103,6 +103,7 @@ Hyperparameter tuning is performed to obtain a consistent model architecture,
 **4. Evaluation and Metrics**
 
 The model is evaluated and the training and validation accuracy and loss is as shown,
+x-axis : No of epochs | y-axis : Train/Validation Accuracy and Loss 
 
 ![alt text](experiments/images/Train_Test_Graph.png)
 
