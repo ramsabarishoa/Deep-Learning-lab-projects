@@ -13,6 +13,8 @@ Also, please make sure to enter the correct dataset directory path.
 
 The sequence of the codeflow in main.py is as follows:
 
+**Dataset used :  Indian Diabetic Retinopathy Image Dataset (IDRiD)**
+
 - An input pipeline is set-up initially  
 - A model architecture is built
 - Training of the model (Also, the saved model(DRD_model.h5) can be found in the experiments folder)  
