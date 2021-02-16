@@ -25,7 +25,7 @@ The sequence of the codeflow in main.py is as follows:
 # Results
 
 **--------------------------------------------------------------------**  
-**The overall test accuracy obtained is 77.79%.**  
+**The overall test accuracy obtained is 79.06%.**  
 **--------------------------------------------------------------------**  
 
 
@@ -92,7 +92,7 @@ Hyperparameter tuning is performed to obtain a consistent model architecture,
 
 - HP_LSTM_NEURONS
 - HP_EPOCHS  
-- HP_DENSE_LAYER  
+- HP_OPTIMIZER 
 - HP_DROPOUT  
 
 ![alt text](experiments/images/HP_tuning.png)
@@ -101,9 +101,15 @@ Hyperparameter tuning is performed to obtain a consistent model architecture,
 
 The model is evaluated and the training and validation accuracy and loss is as shown,
 
-![alt text](experiments/images/Train_and_Validation_Accuracy.png)
+![alt text](experiments/images/Train_Test_Graph.png)
 
 **Metrics : Confusion Matrix**
 
+![alt text](experiments/images/Confusion_matrix.png)
+
+
+**Metrics : Normalized Confusion Matrix**
+
+![alt text](experiments/images/normalized_matrix.png)
 
 
