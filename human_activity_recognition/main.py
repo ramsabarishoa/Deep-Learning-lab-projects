@@ -2,7 +2,7 @@ import logging
 from absl import app, flags
 import os
 Project_Header = '''|--------------------------------------------------------------------------------------------|
-|Diabetic Retinopathy Detection Project - Team05                                             |
+|Human Activity Recognition Project - Team05                                             |
 |--------------------------------------------------------------------------------------------|
 |Team Members :                                                                              |
 |1.  Ram Sabarish Obla Amar Bapu     |st169693|  email ID:  st169693@stud.uni-stuttgart.de   |
