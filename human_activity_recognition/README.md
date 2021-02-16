@@ -97,7 +97,7 @@ Hyperparameter tuning is performed to obtain a consistent model architecture,
 
 ![alt text](experiments/images/HP_tuning.png)
 
-**5. Evaluation and Metrics**
+**4. Evaluation and Metrics**
 
 The model is evaluated and the training and validation accuracy and loss is as shown,
 
