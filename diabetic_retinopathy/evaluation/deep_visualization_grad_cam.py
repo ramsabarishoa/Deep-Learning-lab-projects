@@ -80,6 +80,7 @@ cam_gradcam = cv2.resize(cam_gradcam.numpy(), (256, 256))
 cam = np.maximum(cam, 0)
 cam_gradcam = np.maximum(cam_gradcam, 0)
 
+#Heatmap Visualization
 heatmap = (cam - cam.min()) / (cam.max() - cam.min())
 heatmap_gradcam = (cam_gradcam - cam_gradcam.min()) / (cam_gradcam.max() - cam_gradcam.min())
 
