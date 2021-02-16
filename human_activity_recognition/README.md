@@ -13,6 +13,7 @@ Also, please make sure to enter the correct dataset directory path.
 
 The sequence of the codeflow in main.py is as follows:
 
+Dataset used : Human Activities and Postural Transitions Dataset(HAPT)
 - An input pipeline is set-up initially  
 - A model architecture is built
 - Training of the model (Also, the saved model(HAR_model.h5) can be found in the experiments folder)  
