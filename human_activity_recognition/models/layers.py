@@ -19,11 +19,8 @@ def model(input_shape, n_classes):
     """
     inputs = keras.Input(shape=input_shape)
     x = layers.LSTM(256, return_sequences=True)(inputs)
-    x = layers.Dropout(0.3)(x)
-    x = layers.LSTM(128, return_sequences=True)(x)
     x = layers.Dropout(0.2)(x)
-    x = layers.LSTM(64, return_sequences=True)(x)
-    x = layers.Dropout(0.10)(x)
+    x = layers.LSTM(128, return_sequences=True)(x)
     outputs = layers.Dense(n_classes, activation='softmax')(x)
 
     mdl = keras.Model(inputs=inputs, outputs=outputs, name='HAR_Model')
