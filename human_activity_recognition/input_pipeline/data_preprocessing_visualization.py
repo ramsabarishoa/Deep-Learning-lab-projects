@@ -155,18 +155,12 @@ def read_acc_gyro_data(file_path, column_names):
   x = column_names[0]
   y = column_names[1]
   z = column_names[2]
-  df[x] = df[x].apply(convert_to_float)
-  df[y] = df[y].apply(convert_to_float)
-  df[z] = df[z].apply(convert_to_float)
+  df[x] = df[x].astype(np.float)
+  df[y] = df[y].astype(np.float)
+  df[z] = df[z].astype(np.float)
   df.dropna(axis=0, how='any', inplace=True)
   return df
 
-#Function to convert all accelerometer and gyroscope values to float
-def convert_to_float(x):
-    try:
-        return np.float(x)
-    except:
-        return np.nan
 def data_Normalization():
   df_train = []
   df_test = []
